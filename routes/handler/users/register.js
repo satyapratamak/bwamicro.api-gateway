@@ -1,14 +1,14 @@
 const apiAdapter = require('../../apiAdapter');
-const {URL_SERVICE_MEDIA} = process.env;
+const {URL_SERVICE_USER} = process.env;
 
 
-const api = apiAdapter(URL_SERVICE_MEDIA);
+const api = apiAdapter(URL_SERVICE_USER);
 
 
 module.exports = async (req, res) => {
 
     try {
-        const user = await api.get('/media', req.body);
+        const user = await api.post('/users/register', req.body);
         return res.json(user.data);
     }catch(error){
 
@@ -23,21 +23,30 @@ module.exports = async (req, res) => {
         return res.status(status).json(data);
     }
 
-    // await api.get(`${URL_SERVICE_MEDIA}/media`)
+    // await api.post(`/users/register`, req.body)
     // .then(function (response) {
     //     return res.json(response.data);
     // })
     // .catch(function (error) {
     //     if (error.response) {
 
+    //         console.log(error.response);
+
     //         if (error.response.status == 500){
     //             return res.status(error.response.status).json({
     //                 message : 'service unavailable',
     //             });
     //         }
+
+    //         if (error.response.status == 400){
+    //             return res.status(error.response.status).json({
+    //                 message : error.response.message,
+    //             });
+    //         }
             
     //         return res.status(error.response.status).json({
     //             message : error.message,
+    //             tag : 'res.status(error.response.status)'
     //         });
 
         
