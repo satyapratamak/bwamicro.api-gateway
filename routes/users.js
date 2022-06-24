@@ -10,6 +10,7 @@ const usersHandler = require('./handler/users');
 // });
 
 router.post('/register', usersHandler.register);
+router.post('/login', usersHandler.login);
 //router.get('/', mediaHandler.getAll);
 //router.delete('/:id', mediaHandler.destroy);
 
