@@ -17,6 +17,7 @@ const ordersRouter = require('./routes/orders');
 const paymentsRouter = require('./routes/payments');
 const refreshTokensRouter = require('./routes/refreshTokens');
 const mentorsRouter = require('./routes/mentors');
+const webhookRouter = require('./routes/webhook');
 
 
 const verifyToken = require('./middlewares/verifyToken');
@@ -43,5 +44,6 @@ app.use('/orders', ordersRouter);
 app.use('/payments', paymentsRouter);
 app.use('/mentors', verifyToken, mentorsRouter);
 app.use('/refresh-tokens', refreshTokensRouter);
+app.use('/webhook', webhookRouter);
 
 module.exports = app;
